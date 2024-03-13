@@ -1,0 +1,186 @@
+@keyframes sidebarFadeIn {
+	from {
+			opacity: 0;
+	}
+	to {
+			opacity: 1;
+	}
+}
+
+/* Fade-out animation */
+@keyframes sidebarFadeOut {
+	from {
+			opacity: 1;
+	}
+	to {
+			opacity: 0;
+	}
+}
+
+@keyframes sidebarWrapperFadeIn {
+	0% {
+			opacity: 0;
+			transform: translateX(10%);
+	}
+	50%,
+	100% {
+			opacity: 1;
+			transform: translateX(0);
+	}
+}
+
+/* Fade-out animation */
+@keyframes sidebarWrapperFadeOut {
+	from {
+			opacity: 1;
+			transform: translateX(0);
+	}
+	to {
+			opacity: 0;
+			transform: translateX(10%);
+	}
+}
+
+.sidebar {
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.6);
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 10000;
+
+	transition: 0.3s;
+}
+
+.sidebar.sidebar-open {
+	animation: sidebarFadeIn 0.3s ease-in-out forwards;
+	pointer-events: auto;
+	/* Apply fade-in animation when modal is open */
+	animation-direction: alternate; /* Add this line */
+}
+
+.sidebar.sidebar-closing-animation {
+	animation: sidebarFadeOut 0.3s ease-in-out forwards;
+	/* Apply fade-out animation when modal is closed */
+	animation-direction: alternate; /* Add this line */
+}
+
+.sidebar__wrapper.sidebar-open {
+	animation: sidebarWrapperFadeIn 0.5s ease-in-out forwards;
+	pointer-events: auto;
+	/* Apply fade-in animation when modal is open */
+	animation-direction: alternate; /* Add this line */
+}
+
+.sidebar__wrapper.sidebar-closing-animation {
+	animation: sidebarWrapperFadeOut 0.5s ease-in-out forwards;
+	/* Apply fade-out animation when modal is closed */
+	animation-direction: alternate; /* Add this line */
+}
+
+.sidebar__wrapper {
+	width: 300px;
+	height: 100vh;
+	padding: 30px 20px 20px 20px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 1;
+	background: #fff;
+	transition: 0.5s;
+}
+
+.sidebar__close {
+	background: none;
+	padding: 0;
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.sidebar__info {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.sidebar__item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.sidebar__item-link {
+	font-size: 15px;
+}
+
+.sidebar__profile {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	border-bottom: 1px solid rgba(115, 158, 253, 0.7);
+	padding-bottom: 10px;
+}
+
+.sidebar__profile-links {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.sidebar__profile-link, .sidebar__profile-info div {
+	max-width: 210px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.sidebar__items-content {
+	display: grid;
+	justify-content: flex-start;
+	gap: 5px;
+	padding: 10px 0;
+	border-bottom: 1px solid rgba(115, 158, 253, 0.7);
+}
+
+.sidebar__profile-icon {
+	width: 40px;
+}
+
+.sidebar__profile-info {
+	font-size: 14px;
+}
+
+.sidebar__item {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+}
+
+.sidebar__icon {
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--first-color);
+}
+
+.sidebar__leave i {
+	color: red;
+}
+
+.sidebar__leave button {
+	color: red;
+}
+
+@media screen and (max-width: 300px) {
+	.sidebar__wrapper {
+			width: 100%;
+			padding: 30px 40px 20px 20px;
+	}
+}
